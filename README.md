@@ -13,6 +13,8 @@
 
 **Тестирование**
 
-![Скриншот]()
+![Скриншот](https://github.com/EnotKommunist/laba8/blob/main/Снимок%20экрана%202026-04-27%20220752.png)
 
+![Скриншот](https://github.com/EnotKommunist/laba8/blob/main/Снимок%20экрана%202026-04-27%20220823.png)
 
+![Скриншот](https://github.com/EnotKommunist/laba8/blob/main/Снимок%20экрана%202026-04-27%20220842.png)
