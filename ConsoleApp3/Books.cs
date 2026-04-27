@@ -1,4 +1,4 @@
-﻿// Book.cs
+// Book.cs
 using System;
 
 namespace BookCatalog
