@@ -1,16 +1,19 @@
-﻿// BookManager.cs
+// BookManager.cs
 using System.Text;
 
 namespace BookCatalog
 {
     public class BookManager
     {
-        private List<Book> books = new List<Book>();
-        private string file = "catalog.dat";
+        private List<Book> books;
 
-        // 1. Чтение из бинарного файла (свой формат)
+        public BookManager()
+        {
+            books = new List<Book>();
+        }
         public void Load()
         {
+            string file = "catalog.dat";
             if (!File.Exists(file)) return;
 
             try
@@ -41,6 +44,7 @@ namespace BookCatalog
         // Сохранение в бинарный файл
         private void Save()
         {
+            string file = "catalog.dat";
             using (var fs = new FileStream(file, FileMode.Create))
             using (var bw = new BinaryWriter(fs, Encoding.UTF8))
             {
