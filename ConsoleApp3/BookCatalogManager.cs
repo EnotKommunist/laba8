@@ -14,7 +14,10 @@ namespace BookCatalog
         public void Load()
         {
             string file = "catalog.dat";
-            if (!File.Exists(file)) return;
+            if (!File.Exists(file))
+            {
+                return;
+            }
 
             try
             {
@@ -100,20 +103,45 @@ namespace BookCatalog
             Save();
         }
 
-        public int NextId() => books.Count == 0 ? 1 : books.Max(x => x.Id) + 1;
+        public int NextId()
+        {
+            if (books.Count == 0)
+            {
+                return 1;
+            }
+            else
+            {
+                return books.Max(x => x.Id) + 1;
+            }
+        }
 
-        // Запрос 1: список книг автора (LINQ, возвращает перечень)
-        public List<Book> GetByAuthor(string author) =>
-            books.Where(x => x.Author.Equals(author, StringComparison.OrdinalIgnoreCase)).ToList();
+        // Запрос 1: список книг автора
+        public List<Book> GetByAuthor(string author)
+        {
+            return books.Where(x => x.Author.Equals(author)).ToList();
+        }
 
-        // Запрос 2: список книг дешевле цены (LINQ, возвращает перечень)
-        public List<Book> GetCheaper(double price) =>
-            books.Where(x => x.Price < price).OrderByDescending(x => x.Price).ToList();
-
-        // Запрос 3: средняя цена (LINQ, одно значение)
-        public double AvgPrice() => books.Any() ? books.Average(x => x.Price) : 0;
-
-        // Запрос 4: общее число страниц (LINQ, одно значение)
-        public int TotalPages() => books.Sum(x => x.Pages);
+        // Запрос 2: список книг дешевле цены
+        public List<Book> GetCheaper(double price)
+        {
+            return books.Where(x => x.Price < price).ToList();
+        }
+        // Запрос 3: средняя цена
+        public double AvgPrice()
+        {
+            if (books.Any())
+            {
+                return books.Average(x => x.Price);
+            }
+            else
+            {
+                return 0;
+            }
+        }
+        // Запрос 4: общее число страниц
+        public int TotalPages()
+        {
+            return books.Sum(x => x.Pages);
+        }
     }
 }
